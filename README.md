@@ -1,5 +1,6 @@
 # ExposureFusion
 ---------------02.Mar.18 Imjae Park---------------
+
 This is the implementation of Exposure fusion algorithm ('Exposure fusion' In proceedings of Pacific Graphics 2007).
 I coded this algorithm on my own using OpenCV and C++.
 If you any theoretical question about Exposure fusion, i recommend you to read the paper or contact author.
