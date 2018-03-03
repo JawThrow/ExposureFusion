@@ -1,4 +1,4 @@
-## ExposureFusion(proceedings of Pacific Graphics 2007)
+## ExposureFusion
 ### Introduction
 
 This is the implementation of Exposure fusion algorithm ('Exposure fusion' In proceedings of Pacific Graphics 2007).
