@@ -8,6 +8,7 @@
 #include <time.h>
 #include <windows.h>
 using namespace cv;
+
 using namespace std;
 
 #define GRAY 1
@@ -19,36 +20,6 @@ using namespace std;
 #define BLOCKROWS 32
 #define BLOCKCOLS 24
 
-class QualityMeasures
-{
-private:
-	Mat Contrast;
-	Mat Saturation;
-	Mat WellExposedness;
-	Mat WeightMap;
-	Mat WeightMapColor[3]; // B, G, R
-	double LUTWEN[256] = {0.0439369, 0.0461355, 0.0484255, 0.0508095, 0.0532905, 0.0558711, 0.0585542, 0.0613425, 0.0642389, 0.0672462, 0.0703673, 0.0736049, 0.0769618, 0.0804409, 0.084045, 0.0877768, 0.091639, 0.0956345, 0.0997657, 0.104035, 0.108446, 0.113, 0.117701, 0.122549, 0.127549, 0.132701, 0.138008, 0.143473, 0.149096, 0.154881, 0.160828, 0.166939, 0.173215, 0.179659, 0.186271, 0.193051, 0.200002, 0.207123, 0.214415, 0.221879, 0.229514, 0.237321, 0.245299, 0.253448, 0.261767, 0.270255, 0.27891, 0.287733, 0.29672, 0.305871, 0.315182, 0.324652, 0.334279, 0.344058, 0.353987, 0.364063, 0.374282, 0.384639, 0.395131, 0.405754, 0.416502, 0.42737, 0.438353, 0.449446, 0.460642, 0.471935, 0.48332, 0.494789, 0.506336, 0.517952, 0.529632, 0.541367, 0.553149, 0.56497, 0.576822, 0.588697, 0.600585, 0.612477, 0.624365, 0.636239, 0.648089, 0.659906, 0.671681, 0.683403, 0.695062, 0.706648, 0.718152, 0.729562, 0.740868, 0.752061, 0.763129, 0.774062, 0.78485, 0.795483, 0.805949, 0.81624, 0.826344, 0.836252, 0.845953, 0.855438, 0.864696, 0.873719, 0.882497, 0.89102, 0.89928, 0.907267, 0.914974, 0.922391, 0.929511, 0.936326, 0.942828, 0.94901, 0.954866, 0.960389, 0.965572, 0.97041, 0.974898, 0.979029, 0.982801, 0.986207, 0.989245, 0.991911, 0.994202, 0.996115, 0.997648, 0.998799, 0.999568, 0.999952, 0.999952, 0.999568, 0.998799, 0.997648, 0.996115, 0.994202, 0.991911, 0.989245, 0.986207, 0.9828, 0.979029, 0.974898, 0.97041, 0.965572, 0.960389, 0.954866, 0.94901, 0.942828, 0.936326, 0.929511, 0.922391, 0.914974, 0.907267, 0.89928, 0.89102, 0.882497, 0.873719, 0.864696, 0.855438, 0.845953, 0.836252, 0.826344, 0.81624, 0.805949, 0.795483, 0.78485, 0.774062, 0.763129, 0.75206, 0.740868, 0.729562, 0.718152, 0.706648, 0.695062, 0.683403, 0.671681, 0.659906, 0.648089, 0.636238, 0.624365, 0.612477, 0.600584, 0.588697, 0.576822, 0.56497, 0.553149, 0.541367, 0.529632, 0.517952, 0.506336, 0.494789, 0.48332, 0.471935, 0.460642, 0.449446, 0.438353, 0.42737, 0.416502, 0.405754, 0.395131, 0.384639, 0.374282, 0.364063, 0.353987, 0.344058, 0.334279, 0.324652, 0.315182, 0.305871, 0.29672, 0.287733, 0.27891, 0.270255, 0.261767, 0.253448, 0.245299, 0.237321, 0.229514, 0.221879, 0.214415, 0.207123, 0.200002, 0.193051, 0.18627, 0.179659, 0.173215, 0.166939, 0.160828, 0.154881, 0.149096, 0.143473, 0.138008, 0.132701, 0.127549, 0.122549, 0.117701, 0.113, 0.108446, 0.104035, 0.0997657, 0.0956345, 0.091639, 0.0877768, 0.084045, 0.0804409, 0.0769618, 0.0736048, 0.0703673, 0.0672462, 0.0642389, 0.0613425, 0.0585542, 0.0558711, 0.0532905, 0.0508095, 0.0484255, 0.0461355 };
-public:
-	QualityMeasures(Mat img, Mat gimg)
-	{
-#if MODE==GRAY
-		this->Contrast = getContrastMeasure(gimg);
-		this->Saturation = getSaturationMeasure(img);
-		this->WellExposedness = getWellExposednessMeasure(gimg);	// 아직까지잘된건지의심스럽다
-		this->WeightMap = getWeightMapImage();
-#endif
-	}
-	Mat getContrastMeasure(Mat src);
-	Mat getSaturationMeasure(Mat src);
-	Mat getWellExposednessMeasure(Mat src);
-	Mat getWeightMapImage();
-	Mat getterContrast() { return Contrast.clone(); }
-	Mat getterSaturation() { return Saturation.clone(); }
-	Mat getterWellExposedness() { return WellExposedness.clone(); }
-	Mat getterWeightMap() { return WeightMap.clone(); }
-	Mat getterWeightMapColor(int nch) { return WeightMapColor[nch].clone(); }
-};
-
 
 class ExposureFusion
 {
@@ -59,7 +30,7 @@ private:
 	vector<vector<Mat>> WeightMapsColor;	
 	vector<Mat> NorWeightMaps;
 	vector<vector<Mat>> NorWeightMapsColor;
-	Mat resultimage;
+	Mat ResultImage;
 	int nframes;
 public:
 	ExposureFusion(char* seqPath)
@@ -105,9 +76,25 @@ public:
 		}
 		cout << "finish to read Image Sequence " << endl;
 	}
-	void QualityMeasuresProcessing(void);
-	// 한번 호출로 nframes만큼의 weight map 생성;
+	void QualityMeasuresProcessing(void);		
+	void FusionProcessing(void);
+	
+	void setNormalizedWeightMaps(); // Quality measure 안으로?
+	Mat setResultByPyramid(int nch);
 
+/*******************************************
+*getter
+********************************************/
+public:	
+	Mat getinputImage(const int i) { return inputImages[i].clone(); }
+	vector<Mat> getinputImages() const { return inputImages; }
+	Mat getWeightMap(const int i) { return WeightMaps[i].clone(); }
+	vector<Mat> getWeightMaps() const { return WeightMaps; }
+	Mat getNorWeightMap(const int i) { return NorWeightMaps[i].clone(); }
+	vector<Mat> getNorWeightMaps() const { return NorWeightMaps; }
+	Mat getResultImage() { return ResultImage.clone(); }
+	int getnframes() const { return nframes; }
+	
 	bool SaveImageBMP(const char* filename)
 	{
 		if (!strcmp(".bmp", &filename[strlen(filename) - 4]))
@@ -117,9 +104,9 @@ public:
 			if (!pFile)
 				return false;
 
-			int m_nChannels = resultimage.channels();
-			int m_nHeight = resultimage.rows;
-			int m_nWidth = resultimage.cols;
+			int m_nChannels = ResultImage.channels();
+			int m_nHeight = ResultImage.rows;
+			int m_nWidth = ResultImage.cols;
 			int m_nWStep = (m_nWidth*m_nChannels * sizeof(uchar) + 3)&~3;
 
 			BITMAPFILEHEADER fileHeader;
@@ -158,7 +145,7 @@ public:
 			int r;
 			for (r = m_nHeight - 1; r >= 0; r--)
 			{
-				fwrite(&resultimage.data[r*m_nWStep], sizeof(BYTE), m_nWStep, pFile);
+				fwrite(&ResultImage.data[r*m_nWStep], sizeof(BYTE), m_nWStep, pFile);
 			}
 
 			fclose(pFile);
@@ -169,8 +156,5 @@ public:
 			return false;
 		}
 	}
-	void FusionProcessing(void);
-	void setNormalizedWeightMaps();
-	Mat setResultByPyramid(int nch);
-	int getnframes() const	{ return nframes; }
 };
+

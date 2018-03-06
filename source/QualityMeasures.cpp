@@ -1,4 +1,5 @@
-#include "ExposureFusion.h"
+#include "QualityMeasures.h"
+#include <opencv2\imgproc\imgproc.hpp>
 
 using namespace cv;
 
@@ -43,7 +44,7 @@ Mat QualityMeasures::getSaturationMeasure(Mat src)
 	float variance = 0;
 	float stdDev = 0;
 
-#if MODE==GRAY
+
 	for (int y = 0; y < src.rows; y++)
 	{		
 		for (int x = 0; x < src.cols; x++)
@@ -59,7 +60,7 @@ Mat QualityMeasures::getSaturationMeasure(Mat src)
 			stdDevImg.at<uchar>(y, x) = (uchar)(stdDev+0.5);
 		}
 	}
-#endif
+
 
 	Mat dst = stdDevImg.clone();
 	return dst;
@@ -99,7 +100,8 @@ Mat QualityMeasures::getWellExposednessMeasure(Mat src)
 	dst = wellexpoimg.clone();*/
 
 	// float
-#if MODE==GRAY
+
+
 	//Mat temp(src.size(), CV_32FC3);
 	//for (int y = 0; y < src.rows; y++)
 	//{
@@ -145,9 +147,7 @@ Mat QualityMeasures::getWellExposednessMeasure(Mat src)
 	imshow("t", t);
 	waitKey();*/
 	dst = wellexpoimg.clone();
-
-
-#endif
+	
 
 	/*resize(wellexpoimg, wellexpoimg, Size(wellexpoimg.cols*0.5, wellexpoimg.rows*0.5));
 	imshow("Well Exposedness", wellexpoimg);

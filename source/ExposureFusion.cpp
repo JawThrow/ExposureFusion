@@ -16,31 +16,32 @@ void ExposureFusion::QualityMeasuresProcessing()
 		system("cls");
 		cout << "Quality measure processing - Frame number: " << nfrm + 1;
 		
-		QualityMeasures *qm = new QualityMeasures(inputImages[nfrm].clone(), inputGrayImages[nfrm].clone());	// delete ÇØ¾ßÇÔ
+		QualityMeasures *qm = new QualityMeasures(inputImages[nfrm].clone(), inputGrayImages[nfrm].clone());	// need to be free
 		
-		//originalGray = inputGrayImages[nfrm].clone();
-		//originalColor = inputImages[nfrm].clone();
-		//contrast = qm->getterContrast();
-		//saturation = qm->getterSaturation();
-		//wellexposedness = qm->getterWellExposedness();
-		//weightMap = qm->getterWeightMap();
-		//
-		//if (originalColor.rows > 1000)
-		//{
-		//	resize(originalColor, originalColor, Size(originalColor.cols*0.5, originalColor.rows*0.5));
-		//	resize(originalGray, originalGray, Size(originalGray.cols*0.5, originalGray.rows*0.5));
-		//	resize(contrast, contrast, Size(contrast.cols*0.5, contrast.rows*0.5));
-		//	resize(saturation, saturation, Size(saturation.cols*0.5, saturation.rows*0.5));
-		//	resize(wellexposedness, wellexposedness, Size(wellexposedness.cols*0.5, wellexposedness.rows*0.5));			
-		//}
-		////imshow("originalGray", originalGray);		
-		////imshow("originalColor", originalColor);
-		//imshow("EF Contrast", abs(contrast));
-		//imshow("EF Saturation", saturation);
-		////imshow("Well exposedness", wellexposedness);
-		////namedWindow("WeightMap", CV_WINDOW_FREERATIO);
-		//imshow("WeightMap", weightMap);
-		//waitKey();
+		/*check intermediate result*/
+		/*originalGray = inputGrayImages[nfrm].clone();
+		originalColor = inputImages[nfrm].clone();
+		contrast = qm->getterContrast();
+		saturation = qm->getterSaturation();
+		wellexposedness = qm->getterWellExposedness();
+		weightMap = qm->getterWeightMap();
+		
+		if (originalColor.rows > 1000)
+		{
+			resize(originalColor, originalColor, Size(originalColor.cols*0.5, originalColor.rows*0.5));
+			resize(originalGray, originalGray, Size(originalGray.cols*0.5, originalGray.rows*0.5));
+			resize(contrast, contrast, Size(contrast.cols*0.5, contrast.rows*0.5));
+			resize(saturation, saturation, Size(saturation.cols*0.5, saturation.rows*0.5));
+			resize(wellexposedness, wellexposedness, Size(wellexposedness.cols*0.5, wellexposedness.rows*0.5));			
+		}
+		imshow("originalGray", originalGray);		
+		imshow("originalColor", originalColor);
+		imshow("EF Contrast", abs(contrast));
+		imshow("EF Saturation", saturation);
+		imshow("Well exposedness", wellexposedness);
+		namedWindow("WeightMap", CV_WINDOW_FREERATIO);
+		imshow("WeightMap", weightMap);
+		waitKey();*/
 
 		/*originalGray = inputGrayImages[nfrm].clone();
 		char wnd[256];
@@ -135,7 +136,7 @@ void ExposureFusion::FusionProcessing()
 		resize(dst, dst, Size(dst.cols*0.5, dst.rows*0.5));*/
 		
 	imshow("Exposure Fusion", dst);	
-	resultimage = dst.clone();
+	ResultImage = dst.clone();
 	waitKey();
 	/*if (resultimage.cols % 4)
 		resize(resultimage, resultimage, Size(resultimage.cols - (resultimage.cols % 4), resultimage.rows));*/
