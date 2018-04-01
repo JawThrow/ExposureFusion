@@ -12,7 +12,7 @@ I always welcome your feedback.
 I will add description and some figures of Exposure fusion soon.
 
 ### Description
-Exposure fusion is a useful technique to make a high quality image from bracket images, that is multiple exposure images from identical scene. Bracket images are captured from same scene with different shutter speed and size of aperture, so these images have different well-exposed or saturated region like below figure.
+Exposure fusion is a useful technique to make a high quality image from bracket images, that is multiple exposure images from identical scene. Bracket images are captured from same scene with different exposure options(shutter speed and size of aperture), so that these images have different well-exposed or saturated region like below figure.
 
 ![image](https://user-images.githubusercontent.com/36951642/38173271-60ba8972-35f6-11e8-9a58-87374d33973d.png)
 
