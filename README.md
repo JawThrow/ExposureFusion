@@ -18,10 +18,14 @@ Exposure fusion is a useful technique to make a high quality image from bracket 
 
 Since left image(LDR image1) was captured at a short shutter speed, outdoor region was well expressed, but indoor region was under-saturated. On the contrary, middle image(LDR image2) was captured at a long shutter speed, so indoor region was well represented but outdoor region was over-saturated. Exposure fusion combines the well saturated/exposed regions in each LDR images and makes one result image like right image that expresses both region well!
 
+(I will add additional description)
+
 From [Wikipedia](https://en.wikipedia.org/wiki/Exposure_fusion)...
 | --- |
 |In image processing, computer graphics, and photography, exposure fusion is a technique for blending multiple exposures of the same scene into a single image. As in high dynamic range imaging (HDRI or just HDR), the goal is to capture a scene with a higher dynamic range than the camera is capable of capturing with a single exposure. However, because no HDR image is ever created during exposure fusion, it cannot be considered an HDR technique.|
 
+### demo video
+(I will upload MEF demo video)
 
 ### Contents
 | Folder | description |
