@@ -2,17 +2,16 @@
 ### Introduction
 
 This is the implementation of Exposure fusion algorithm ('Exposure fusion' In proceedings of Pacific Graphics 2007).
-I coded this algorithm on my own using OpenCV and C++.
+I coded this algorithm on my own using C++ and OpenCV.
 If you have any theoretical question about Exposure fusion, i recommend you to read the paper or contact author.
 
-Since I'm not a professional but just a student who loves image processing,
-I approve that there are some mistakes and unefficiency in my code.
+Since I'm not a professional but just a student, I knowledge that there are some mistakes and unefficiency in my code.
 I always welcome your feedback.
 
 I will add description and some figures of Exposure fusion soon.
 
 ### Description
-Exposure fusion is a useful technique to make a high quality image from bracket images, that is multiple exposure images from identical scene. Bracket images are captured from same scene with different exposure options(shutter speed and size of aperture), so that these images have different well-exposed or saturated region like below figure.
+Exposure fusion is a useful technique to make a high quality image from bracket images, that is multiple exposure images from identical scene. Bracket images are kinds of special image sequences that are captured from same scene with different exposure options(shutter speed and size of aperture), so that these images have different well-exposed or saturated region like below figure.
 
 ![image](https://user-images.githubusercontent.com/36951642/38173271-60ba8972-35f6-11e8-9a58-87374d33973d.png)
 
