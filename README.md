@@ -26,7 +26,7 @@ From [Wikipedia](https://en.wikipedia.org/wiki/Exposure_fusion)...
 ### Demo video
 This is a demo video of my program based on modified exposure fusion. Although theorical and practical elements are slightly different from Exposure fusion, the process to make a result image is identical(synthesize a high-qaulity image from braket images). 
 
-[![Video Label](https://img.youtube.com/vi/43N2rdNbWIs/0.jpg](https://youtu.be/43N2rdNbWIs?t=0s)
+[![Video Label](https://img.youtube.com/vi/43N2rdNbWIs/0.jpg)](https://youtu.be/43N2rdNbWIs?t=0s)
 
 ### Contents
 | Folder | description |
