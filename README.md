@@ -24,8 +24,8 @@ From [Wikipedia](https://en.wikipedia.org/wiki/Exposure_fusion)...
 |In image processing, computer graphics, and photography, exposure fusion is a technique for blending multiple exposures of the same scene into a single image. As in high dynamic range imaging (HDRI or just HDR), the goal is to capture a scene with a higher dynamic range than the camera is capable of capturing with a single exposure. However, because no HDR image is ever created during exposure fusion, it cannot be considered an HDR technique.|
 
 ### Demo video
-(I will upload MEF demo video)
-
+This is a demo video of my program based on modified exposure fusion. Although theorical and practical elements are slightly different from Exposure fusion, the process to make a result image is identical(synthesize a high-qaulity image from brakey images). 
+<iframe width="640" height="360" src="https://youtu.be/43N2rdNbWIs" frameborder="0" gesture="media" allowfullscreen=""></iframe>
 ### Contents
 | Folder | description |
 | --- | --- |
