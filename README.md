@@ -5,7 +5,6 @@ This is the implementation of Exposure fusion algorithm ('Exposure fusion' In pr
 I coded this algorithm on my own using C++ and OpenCV.
 If you have any theoretical question about Exposure fusion, i recommend you to read the paper or contact author.
 
-Since I'm not a professional but just a student, I knowledge that there are some mistakes and unefficiency in my code.
 I always welcome your feedback.
 
 I will add description and some figures of Exposure fusion soon.
